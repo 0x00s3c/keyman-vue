@@ -5,6 +5,7 @@ import Contractor from "../views/Get-Contractor.vue";
 import GetContractorKeypickup from "../views/GetContractorKeypickup.vue";
 import GetIDContractor from "../views/Get-ID-Contractor.vue";
 import PostContractorKeypickups from "../views/PostContractorKeypickup.vue";
+import GetKeyinfos from "../views/Get-Keyinfos.vue";
 import Tables from "../views/Tables.vue";
 import UIElements from "../views/UIElements.vue";
 import Login from "../views/Login.vue";
@@ -50,6 +51,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/post-contractor-keypickups",
     name: "PostContractorKeypickups",
     component: PostContractorKeypickups,
+  },
+  {
+    path: "/get-keyinfos",
+    name: "GetKeyinfos",
+    component: GetKeyinfos,
   },
   {
     path: "/cards",

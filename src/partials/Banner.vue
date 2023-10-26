@@ -18,10 +18,10 @@
         👉
         <a
           class="hover:underline"
-          href="https://github.com/tal7aouy/vue-board"
+          href="https://github.com/0x000s3c/keyman-vue"
           target="_blank"
           rel="noreferrer"
-          >Star VueBoard on GitHub</a
+          >Star Keyman-vue on GitHub</a
         >
       </div>
       <button

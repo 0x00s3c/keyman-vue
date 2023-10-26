@@ -48,7 +48,7 @@
               <!-- Download link for the captured image -->
               <a id="downloadImageLink" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" style="display: none;" download="pickup_image.jpeg">Download Image</a><br />
               <!-- Include a hidden input field to store the captured image data URL -->
-              <input type="file" id="pickup_photo_path" name="pickup_photo_path" />
+              <input type="file" class="px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" id="pickup_photo_path" name="pickup_photo_path" />
             </div>
             <div class="mt-4">
               <button type="button" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" @click="submitForm">Submit</button>
