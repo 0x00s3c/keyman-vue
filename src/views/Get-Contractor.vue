@@ -257,7 +257,7 @@ const updateFormData = ref<Contractor>({
 // Function to fetch data from the API
 async function fetchData() {
   try {
-    const url = "http://keyman-env.eba-dhwuuaiv.us-east-1.elasticbeanstalk.com/api/contractors";
+    const url = "https://www.prototypeapp.online/api/contractors";
     const headers = {
       "Authorization": "Bearer 17|jnWPdWo8JoCK9EJZc2fLp3rmYYRBUtyLIyt301s6",
       "Content-Type": "application/json",

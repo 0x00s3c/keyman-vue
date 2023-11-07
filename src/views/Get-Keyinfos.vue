@@ -275,7 +275,7 @@
   // Function to fetch data from the API
   async function fetchData() {
     try {
-      const url = "http://keyman-env.eba-dhwuuaiv.us-east-1.elasticbeanstalk.com/api/keyinfos";
+      const url = "https://keyman-env.eba-dhwuuaiv.us-east-1.elasticbeanstalk.com/api/keyinfos";
       const headers = {
         "Authorization": "Bearer 17|jnWPdWo8JoCK9EJZc2fLp3rmYYRBUtyLIyt301s6",
         "Content-Type": "application/json",
@@ -316,7 +316,7 @@
   // Function to update the contractor information
   async function submitUpdate() {
     try {
-      const url = `http://keyman-env.eba-dhwuuaiv.us-east-1.elasticbeanstalk.com/api/contractors/1`;
+      const url = `https://keyman-env.eba-dhwuuaiv.us-east-1.elasticbeanstalk.com/api/contractors/1`;
       const headers = {
         "Authorization": "Bearer 17|jnWPdWo8JoCK9EJZc2fLp3rmYYRBUtyLIyt301s6",
         "Content-Type": "multipart/form-data",

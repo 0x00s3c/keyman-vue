@@ -55,7 +55,7 @@
   
   
   const submitForm = () => {
-    const url = 'http://keyman-env.eba-dhwuuaiv.us-east-1.elasticbeanstalk.com/api/contractors/1';
+    const url = 'https://www.prototypeapp.online/api/contractors/2';
     const headers = {
       'Authorization': 'Bearer 17|jnWPdWo8JoCK9EJZc2fLp3rmYYRBUtyLIyt301s6',
       'Accept': 'application/json',

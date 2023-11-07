@@ -134,7 +134,7 @@
   async function fetchData() {
     try {
       const id = contractorId.value; // Get the ID from user input
-      const url = `http://keyman-env.eba-dhwuuaiv.us-east-1.elasticbeanstalk.com/api/contractors/${id}`;
+      const url = `https://www.prototypeapp.online/api/contractors/${id}`;
       const headers = {
         "Authorization": "Bearer 17|jnWPdWo8JoCK9EJZc2fLp3rmYYRBUtyLIyt301s6",
         "Content-Type": "application/json",

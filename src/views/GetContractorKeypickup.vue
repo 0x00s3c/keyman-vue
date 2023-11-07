@@ -162,7 +162,7 @@ const apiData = ref<GetContractorKeypickup[]>([]);
 async function fetchDataByContractorId() {
   try {
     const id = contractorId.value;
-    const url = `http://keyman-env.eba-dhwuuaiv.us-east-1.elasticbeanstalk.com/api/contractors/${id}/keypickups`;
+    const url = `https://www.prototypeapp.online/api/contractors/${id}/keypickups`;
     const headers = {
       "Authorization": "Bearer 17|jnWPdWo8JoCK9EJZc2fLp3rmYYRBUtyLIyt301s6",
       "Content-Type": "application/json",
