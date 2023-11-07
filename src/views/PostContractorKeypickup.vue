@@ -2,14 +2,21 @@
     <div>
       <!-- Breadcrumb -->
       <Breadcrumb breadcrumb="PostContractorKeypickups" />
-  
+
       <div class="mt-8">
         <h4 class="text-gray-600">POST Contractor Key Pickup</h4>
         <form id="pickupForm">
           <div class="form-row">
             <div class="mt-4">
               <label for="purpose">Purpose: </label>
-              <input type="text" class="px-4 py-2 border rounded-md" id="purpose" name="purpose" required v-model="purpose" />
+              <input
+                type="text"
+                class="px-4 py-2 border rounded-md"
+                id="purpose"
+                name="purpose"
+                required
+                v-model="purpose"
+              />
             </div>
             <div class="mt-4">
               <label for="status">Status: </label>
@@ -22,7 +29,14 @@
           <div class="form-row">
             <div class="mt-4">
               <label for="keyinfo_id">Keyinfo ID: </label>
-              <input type="text" class="px-4 py-2 border rounded-md" id="keyinfo_id" name="keyinfo_id" required v-model="keyinfo_id" />
+              <input
+                type="text"
+                class="px-4 py-2 border rounded-md"
+                id="keyinfo_id"
+                name="keyinfo_id"
+                required
+                v-model="keyinfo_id"
+              />
             </div>
           </div>
           <div class="form-row">
@@ -34,9 +48,37 @@
           </div>
           <div class="form-row">
             <div class="mt-6">
-              <button type="button" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" @click="startScanner">Start Scanner</button> &nbsp;
-              <button type="button" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" @click="stopScanner">Stop Scanner</button> &nbsp;
-              <button type="button" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" @click="captureImage">Capture Image</button> &nbsp;
+              <button
+                type="button"
+                class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                @click="startScanner"
+              >
+                Start Scanner
+              </button>
+              &nbsp;
+              <button
+                type="button"
+                class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                @click="stopScanner"
+              >
+                Stop Scanner
+              </button>
+              &nbsp;
+              <button
+                type="button"
+                class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                @click="captureImage"
+              >
+                Capture Image
+              </button>
+              &nbsp;
+              <button
+                type="button"
+                class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                @click="switchCamera"
+              >
+                Switch Camera
+              </button>
             </div>
           </div>
           <div class="form-row">
@@ -46,18 +88,25 @@
               <!-- Include a hidden input field to store the captured image data URL -->
               <input type="hidden" id="pickup_photo_path_upload" name="pickup_photo_path_upload" v-model="pickup_photo_path_upload" />
               <!-- Download link for the captured image -->
-              <a id="downloadImageLink" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" style="display: none;" download="pickup_image.jpeg">Download Image</a><br />
+              <a id="downloadImageLink" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" style="display: none;" download="pickup_image.jpeg">Download Image</a>
+              <br />
               <!-- Include a hidden input field to store the captured image data URL -->
               <input type="file" class="px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" id="pickup_photo_path" name="pickup_photo_path" />
             </div>
             <div class="mt-4">
-              <button type="button" class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500" @click="submitForm">Submit</button>
+              <button
+                type="button"
+                class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
+                @click="submitForm"
+              >
+                Submit
+              </button>
             </div>
           </div>
         </form>
       </div>
     </div>
-  </template>
+</template>
   
   <script setup>
   import { ref } from 'vue';
@@ -70,24 +119,25 @@
   const keyinfo_id = ref('');
   const pickup_photo_path_upload = ref('');
   const video = ref(null);
+  const activeCamera = ref('environment');
   let scannerInterval;
   let scanning = false;
   
-  // Function to set up video stream
+    /// Function to set up video stream
   const setupVideo = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: activeCamera.value } });
       video.value.srcObject = stream;
     } catch (error) {
       console.error('Error accessing camera:', error);
     }
   };
-  
+
   // Lifecycle hook to start the video stream when the component is mounted
   onMounted(() => {
     setupVideo();
   });
-  
+
   // Lifecycle hook to clean up when the component is unmounted
   onBeforeUnmount(() => {
     if (video.value.srcObject) {
@@ -95,6 +145,16 @@
       tracks.forEach((track) => track.stop());
     }
   });
+
+  // Function to switch between front and back cameras
+  const switchCamera = () => {
+    if (activeCamera.value === 'environment') {
+      activeCamera.value = 'user'; // Switch to the front camera
+    } else {
+      activeCamera.value = 'environment'; // Switch to the back camera
+    }
+    setupVideo();
+  };
   
   const startScanner = () => {
     scanning = true;
